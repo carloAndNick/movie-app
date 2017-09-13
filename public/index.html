@@ -9,11 +9,17 @@
 
     <div class="container">
         <h1>Hello There!</h1>
-        <p>To get started, edit <code>src/index.js</code>.</p>
+        <p id="loading">Loading....</p>
 
         <ul id="movie-list">
 
         </ul>
+
+        <form  method="post" action='/api/movies'>
+            <input type="text" id="title">
+            <input type="text" id="rating">
+            <button type="button" id="button">submit</button>
+        </form>
     </div>
 
     <script src="/main.js"></script>

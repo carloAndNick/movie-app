@@ -11,6 +11,7 @@ const getMovies = require('./getMovies.js');
 
 getMovies().then((movies) => {
   console.log('Here are all the movies:');
+  document.getElementById("loading").innerHTML = 'Here are all the movies:'
   movies.forEach(({title, rating, id}) => {
       document.getElementById("movie-list").innerHTML +=`<li>id#${id} - ${title} - rating: ${rating}</li>`
   });
@@ -22,3 +23,4 @@ getMovies().then((movies) => {
 function movieList() {
     document.getElementById("movie-list").innerHtml =`id#${id} - ${title} - rating: ${rating}`
 };
+
