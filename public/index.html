@@ -9,13 +9,14 @@
 
     <div class="container">
         <h1>Hello There!</h1>
+        <div id="movie-list-container">
         <p id="loading">Loading....</p>
 
         <ul id="movie-list">
 
         </ul>
-
-        <form  method="post" action=''>
+        </div>
+        <form  method="post" action='' id="new-movie-form">
             <span>Title:</span>
             <input type="text" id="title">
             <span>Rating:</span>
@@ -30,11 +31,11 @@
         </form>
         <button type="button" id="edit-button">Edit Movies</button>
         <form action="" id="edit-form" hidden="true">
-            <p>this should become unhidden when the edit button is pressed</p>
             <select name="edit" id="edit-movie">
             </select>
+            <button type="button" id="edit-this-movie" hidden="true">Edit This Movie</button>
         </form>
-        <button id="edit-this-movie" hidden="true">Edit This Movie</button>
+
         <form id="edit-submit-form" hidden="true">
             <span>Title:</span>
             <input type="text" id="edit-title">

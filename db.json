@@ -11,14 +11,24 @@
       "id": 2
     },
     {
-      "title": "Batman: the Battening",
-      "rating": "3",
+      "title": "Badderman: the Badderening",
+      "rating": "5",
       "id": 3
     },
     {
-      "title": "Stupid Movie",
+      "title": "Utterly ridiculous movie",
       "rating": "2",
       "id": 4
+    },
+    {
+      "title": "I edited this movie again",
+      "rating": "2",
+      "id": 5
+    },
+    {
+      "title": "editing still works",
+      "rating": "3",
+      "id": 6
     }
   ]
 }
