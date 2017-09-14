@@ -11,24 +11,9 @@
       "id": 2
     },
     {
-      "title": "Badderman: the Badderening",
-      "rating": "5",
+      "title": "random movie",
+      "rating": "2",
       "id": 3
-    },
-    {
-      "title": "Utterly ridiculous movie",
-      "rating": "2",
-      "id": 4
-    },
-    {
-      "title": "I edited this movie again",
-      "rating": "2",
-      "id": 5
-    },
-    {
-      "title": "editing still works",
-      "rating": "3",
-      "id": 6
     }
   ]
 }

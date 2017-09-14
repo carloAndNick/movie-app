@@ -10,6 +10,7 @@ sayHello('World');
 const getMovies = require('./getMovies.js');
 // document.getElementById("edit-form").setAttribute("hidden", "true");
 function displayAllMovies() {
+    document.getElementById("movie-list").innerHTML = "";
     getMovies().then((movies) => {
         console.log('Here are all the movies:');
         document.getElementById("loading").innerHTML = 'Here are all the movies:'
@@ -62,6 +63,11 @@ function addMovieToEdit(title, id){
 }
 console.log(document.getElementById("edit-movie").innerHTML);
 
+//function to add movies to the delete fields
+function addMovieToDelete(title, id){
+    document.getElementById("delete-movie").innerHTML +=`<option value=${id}>${title}</option>`
+}
+
 //event handler for edit button
 function editButton() {
     reHide("movie-list-container");
@@ -71,6 +77,7 @@ function editButton() {
     unHide("edit-this-movie");
     getMovies().then((movies) => {
         console.log('Editing movies...');
+        document.getElementById("edit-movie").innerHTML = "";
         movies.forEach(({title, id}) => {
             addMovieToEdit(title, id)
         });
@@ -129,10 +136,57 @@ function submitEdit(){
 //event listener for submitting edits
 document.getElementById("confirm-edit-button").addEventListener("click", submitEdit);
 
+//event handler for opening delete dialog
+function deleteDialogButton() {
+    reHide("delete-a-movie")
+    reHide("movie-list-container");
+    reHide("new-movie-form");
+    reHide("edit-button");
+    unHide("delete-form");
+    unHide("delete-this-movie");
+    getMovies().then((movies) => {
+        console.log('Deleting a movie...');
+        document.getElementById("delete-movie").innerHTML = "";
+        movies.forEach(({title, id}) => {
+            addMovieToDelete(title, id)
+        });
+    }).catch((error) => {
+        alert('Oh no! Something went wrong.\nCheck the console for details.');
+        console.log(error);
+    });
+}
+//event listener for delete a movie button
+document.getElementById("delete-a-movie").addEventListener("click", deleteDialogButton);
+
+//event handler
+function deleteButton(){
+    // let editedMovieTitle = document.getElementById("delete-title").value;
+    // let editedMovieRating = document.getElementById("-rating").value;
+    let movieToDeleteId = document.getElementById("delete-movie").value;
+    // let editedMovieObj = {title:editedMovieTitle,rating:editedMovieRating,id:movieToEditId};
+    // console.log(editedMovieObj);
+    let fetchOptions = {
+        method: "DELETE",
+        // body: JSON.stringify(editedMovieObj),
+        headers: header
+    };
+    fetch(`/api/movies/${movieToDeleteId}`,fetchOptions).then(()=>{
+        document.getElementById("movie-list").innerHTML = "";
+        unHide("movie-list-container");
+        reHide("delete-form");
+        unHide("new-movie-form");
+        unHide("delete-a-movie");
+        unHide("edit-button")
+    }).then(()=>{displayAllMovies()});
+}
+
+//event listener for delete movie
+document.getElementById("delete-this-movie").addEventListener("click", deleteButton);
+
 
 //function to unhide things. the element id should be in the form of a string
 function unHide(elementId) {
-    document.getElementById(elementId).setAttribute("hidden", "false");
+    document.getElementById(elementId).removeAttribute("hidden");
     document.getElementById(elementId).style.display = "initial";
 }
 function reHide(elementId){

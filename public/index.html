@@ -27,16 +27,16 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <button type="button" id="button">submit</button>
+            <button type="button" id="button">Add this Movie</button>
         </form>
         <button type="button" id="edit-button">Edit Movies</button>
-        <form action="" id="edit-form" hidden="true">
+        <form action="" id="edit-form" hidden>
             <select name="edit" id="edit-movie">
             </select>
-            <button type="button" id="edit-this-movie" hidden="true">Edit This Movie</button>
+            <button type="button" id="edit-this-movie" hidden>Edit This Movie</button>
         </form>
 
-        <form id="edit-submit-form" hidden="true">
+        <form id="edit-submit-form" hidden>
             <span>Title:</span>
             <input type="text" id="edit-title">
             <span>Rating:</span>
@@ -49,6 +49,13 @@
             </select>
             <button type="button" id="confirm-edit-button">submit</button>
         </form>
+        <button type="button" id="delete-a-movie">Delete a Movie</button>
+        <form action="" id="delete-form" hidden>
+            <select name="delete" id="delete-movie">
+            </select>
+            <button type="button" id="delete-this-movie" hidden>Delete This Movie</button>
+        </form>
+
     </div>
 
     <script src="/main.js"></script>
