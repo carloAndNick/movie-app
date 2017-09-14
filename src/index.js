@@ -10,14 +10,14 @@ sayHello('World');
 const getMovies = require('./getMovies.js');
 
 getMovies().then((movies) => {
-  console.log('Here are all the movies:');
-  document.getElementById("loading").innerHTML = 'Here are all the movies:'
-  movies.forEach(({title, rating}) => {
-      addMovieToHtml(title, rating)
-  });
+    console.log('Here are all the movies:');
+    document.getElementById("loading").innerHTML = 'Here are all the movies:'
+    movies.forEach(({title, rating}) => {
+        addMovieToHtml(title, rating)
+    });
 }).catch((error) => {
-  alert('Oh no! Something went wrong.\nCheck the console for details.')
-  console.log(error);
+    alert('Oh no! Something went wrong.\nCheck the console for details.')
+    console.log(error);
 });
 
 //this is the event function for clicking the add movie button
@@ -43,5 +43,3 @@ document.getElementById("button").addEventListener("click", addAMovie);
 function addMovieToHtml( title, rating){
     document.getElementById("movie-list").innerHTML +=`<li>${title} - rating: ${rating}</li>`
 }
-
-

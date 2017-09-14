@@ -9,7 +9,7 @@ module.exports = {
   entry: ['promise-polyfill', 'whatwg-fetch', './src/index.js'],
   // where to put the transpiled javascript
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public/js'),
     filename: 'main.js'
   },
 
@@ -36,7 +36,7 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname, 'public/js'),
     port: 1313,
     compress: true,
     watchContentBase: true,
