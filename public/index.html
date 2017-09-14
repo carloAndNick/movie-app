@@ -15,7 +15,7 @@
 
         </ul>
 
-        <form  method="post" action='/api/movies'>
+        <form  method="post" action=''>
             <span>Title:</span>
             <input type="text" id="title">
             <span>Rating:</span>
@@ -27,6 +27,26 @@
                 <option value="5">5</option>
             </select>
             <button type="button" id="button">submit</button>
+        </form>
+        <button type="button" id="edit-button">Edit Movies</button>
+        <form action="" id="edit-form" hidden="true">
+            <p>this should become unhidden when the edit button is pressed</p>
+            <select name="edit" id="edit-movie">
+            </select>
+        </form>
+        <button id="edit-this-movie" hidden="true">Edit This Movie</button>
+        <form id="edit-submit-form" hidden="true">
+            <span>Title:</span>
+            <input type="text" id="edit-title">
+            <span>Rating:</span>
+            <select id="edit-rating" name="Rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button type="button" id="confirm-edit-button">submit</button>
         </form>
     </div>
 
