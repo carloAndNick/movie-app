@@ -36,7 +36,7 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    contentBase: path.join(__dirname, 'public/js'),
+    contentBase: path.join(__dirname, 'public'),
     port: 1313,
     compress: true,
     watchContentBase: true,

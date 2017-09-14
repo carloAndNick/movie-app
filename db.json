@@ -9,6 +9,11 @@
       "title": "Star Wars: A New Hope",
       "rating": "5",
       "id": 2
+    },
+    {
+      "title": "Batman: the Battening",
+      "rating": "3",
+      "id": 3
     }
   ]
 }

@@ -21,20 +21,28 @@ getMovies().then((movies) => {
 });
 
 //this is the event function for clicking the add movie button
+//to add stuff to the JSON file/database, we needed the headers and the body.
+//in the body property the JSON.stringify() is REQUIRED!
+//the data inside the stringify MUST BE an OBJECT
 function addAMovie(){
     let movieTitle= document.getElementById("title").value;
     let movieRating= document.getElementById("rating").value;
-    console.log(movieTitle);
-    console.log(movieRating);
+    let header= new Headers({
+        'Content-Type': 'application/json'
+    });
+    let movieObj = {title:movieTitle,rating:movieRating};
+    console.log(movieObj);
+    let fetchOptions = {
+        method: "POST",
+        body: JSON.stringify(movieObj),
+        headers: header
+    };
+    document.getElementById("title").value = "";
+    document.getElementById("rating").value = "1";
+    fetch("/api/movies", fetchOptions)
+        .then((response)=>console.log(response.json()));
     addMovieToHtml(movieTitle, movieRating)
-    // let movieObj = "{'title':'movieTitle','rating': 'movieRating'}";
-    // // let parsedMovieObj =JSON.parse(movieObj)
-    // let fetchOptions = {
-    //     method: "POST",
-    //     body: movieObj,
-    // };
-    // fetch("/api/movies", fetchOptions)
-    //     .then((response)=>console.log(response.json))
+
 }
 //event listener for button
 document.getElementById("button").addEventListener("click", addAMovie);
