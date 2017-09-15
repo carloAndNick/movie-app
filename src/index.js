@@ -51,7 +51,10 @@ function addAMovie(){
         document.getElementById("rating").value = "1";
         fetch("/api/movies", fetchOptions)
             .then((response) => console.log(response.json()));
-        addMovieToHtml(movieTitle, movieRating)
+        addMovieToHtml(movieTitle, movieRating);
+        changeAddMovie();
+        setTimeout(changeHelloAgain, 2000)
+
     }
 }
 //event listener for button
@@ -105,10 +108,10 @@ function editThisMovie(){
     let movieToEditId= (document.getElementById("edit-movie").value);
     let movieToEditIndex= movieToEditId-1;
     console.log(movieToEditIndex);
-    getMovies().then((movies)=>{
-        console.log(movies[movieToEditIndex]);
-        let movieToEditTitle = movies[movieToEditIndex].title;
-        let movieToEditRating = movies[movieToEditIndex].rating;
+    getMovies(movieToEditId).then((movies)=>{
+        console.log(movies);
+        let movieToEditTitle = movies.title;
+        let movieToEditRating = movies.rating;
         document.getElementById("edit-title").value = movieToEditTitle;
         document.getElementById("edit-rating").value = movieToEditRating
 
@@ -137,13 +140,20 @@ function submitEdit(){
         unHide("new-movie-form");
         unHide("edit-button");
         unHide("delete-a-movie");
-        reHide("cancel-button")
+        reHide("cancel-button");
+        reHide("edit-another");
+
     }).then(()=>{displayAllMovies()});
 
 }
 
 //event listener for submitting edits
 document.getElementById("confirm-edit-button").addEventListener("click", submitEdit);
+document.getElementById("confirm-edit-button").addEventListener("click", function(){
+    movieEdited();
+    setInterval(changeHelloAgain, 1000)
+});
+
 
 //event handler for edit a different movie button
 function editADifferentMovie(){
@@ -176,6 +186,7 @@ function deleteDialogButton() {
         alert('Oh no! Something went wrong.\nCheck the console for details.');
         console.log(error);
     });
+    changeDeleteMovie()
 }
 //event listener for delete a movie button
 document.getElementById("delete-a-movie").addEventListener("click", deleteDialogButton);
@@ -195,11 +206,18 @@ function deleteButton(){
         unHide("delete-a-movie");
         unHide("edit-button");
         reHide("cancel-button")
-    }).then(()=>{displayAllMovies()});
+    })
+        .then(()=>{displayAllMovies()})
+        // .then(()=>changeHelloAgain());
 }
 
 //event listener for delete movie
 document.getElementById("delete-this-movie").addEventListener("click", deleteButton);
+document.getElementById("delete-this-movie").addEventListener("click", function(){
+    movieDeleted();
+    setInterval(changeHelloAgain, 1000)
+});
+
 
 //event handler for cancel button
 function cancelButton(){
@@ -211,7 +229,8 @@ unHide("movie-list-container");
 reHide("cancel-button");
 reHide("edit-form");
 reHide("edit-submit-form");
-reHide("edit-another")
+reHide("edit-another");
+    changeHelloAgain()
 }
 
 
@@ -228,6 +247,7 @@ function reHide(elementId){
     document.getElementById(elementId).setAttribute("hidden", "true");
     document.getElementById(elementId).style.display = "none";
 }
+//change title to edit a movie
 function changeEditMovie() {
     document.getElementById("heading").innerHTML = "Edit A Movie"
 
@@ -240,12 +260,20 @@ function changeDeleteMovie() {
     document.getElementById("heading").innerHTML = "Delete A Movie"
 
 }
-document.getElementById("delete-a-movie").addEventListener("click",changeDeleteMovie);
+// document.getElementById("delete-a-movie").addEventListener("click",changeDeleteMovie);
 
-function changeDeleteMovie() {
-    document.getElementById("heading").innerHTML = "Delete A Movie"
+function changeAddMovie() {
+    document.getElementById("heading").innerHTML = "Added a Movie"
 
 }
+function movieEdited(){
+    document.getElementById("heading").innerHTML = "Movie Edited!"
+}
 
-document.getElementById("button").addEventListener("click",changeDeleteMovie);
 
+function changeHelloAgain(){
+    document.getElementById("heading").innerHTML ="Hello There!"
+}
+function movieDeleted(){
+    document.getElementById("heading").innerHTML ="Movie Deleted!"
+}
