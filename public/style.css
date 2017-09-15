@@ -17,8 +17,8 @@ body {
 
 .container {
     position: relative;
-    top: 64%;
-    transform: translateY(-100%);
+    /*top: 50%;*/
+    /*transform: translateY(-100%);*/
     text-align: center;
     background: rgba(255, 245, 185, .9);
     border: 6px solid black;
@@ -34,9 +34,10 @@ color: orange;
     font-size: 24px;
 
 }
-li{
-    list-style-type: none;
-    list-style-position: inside;
+table{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
     font-family: 'Lobster', cursive;
     font-size: 18px;
 }

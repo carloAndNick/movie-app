@@ -10,7 +10,7 @@ sayHello('World');
 const getMovies = require('./getMovies.js');
 // document.getElementById("edit-form").setAttribute("hidden", "true");
 function displayAllMovies() {
-    document.getElementById("movie-list").innerHTML = "";
+    tableReset();
     getMovies().then((movies) => {
         console.log('Here are all the movies:');
         document.getElementById("loading").innerHTML = 'Here are all the movies:'
@@ -18,7 +18,7 @@ function displayAllMovies() {
             addMovieToHtml(title, rating)
         });
     }).catch((error) => {
-        alert('Oh no! Something went wrong.\nCheck the console for details.')
+        alert('Oh no! Something went wrong.\nCheck the console for details.');
         console.log(error);
     });
 }
@@ -27,6 +27,10 @@ const header= new Headers({
     'Accept':'application/json',
     'Content-Type': 'application/json'
 });
+function tableReset(){
+    document.getElementById("movie-list").innerHTML =`<tr><th>Movie Title</th><th>Movie Rating</th></tr>`
+
+}
 
 //this is the event function for clicking the add movie button
 //to add stuff to the JSON file/database, we needed the headers and the body.
@@ -62,7 +66,7 @@ document.getElementById("button").addEventListener("click", addAMovie);
 
 //function to add movies to the html
 function addMovieToHtml( title, rating){
-    document.getElementById("movie-list").innerHTML +=`<li>${title} - rating: ${rating}</li>`
+    document.getElementById("movie-list").innerHTML +=`<tr><td>${title}</td><td>rating: ${rating}</td></tr>`
 }
 //function to add movies to the edit fields
 function addMovieToEdit(title, id){
