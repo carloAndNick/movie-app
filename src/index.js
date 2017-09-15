@@ -94,7 +94,7 @@ function editButton() {
         movies.forEach(({title, id}) => {
             addMovieToEdit(title, id)
         });
-    }).catch((error) => {
+    }).then(()=>enableButton("edit-this-movie")).catch((error) => {
         alert('Oh no! Something went wrong.\nCheck the console for details.');
         console.log(error);
     });
@@ -109,6 +109,7 @@ function editThisMovie(){
     reHide("edit-form");
     reHide("edit-this-movie");
     unHide("edit-submit-form");
+    disableButton("edit-this-movie");
     let movieToEditId= (document.getElementById("edit-movie").value);
     let movieToEditIndex= movieToEditId-1;
     console.log(movieToEditIndex);
@@ -119,7 +120,7 @@ function editThisMovie(){
         document.getElementById("edit-title").value = movieToEditTitle;
         document.getElementById("edit-rating").value = movieToEditRating
 
-    });
+    }).then(()=>enableButton("confirm-edit-button"));
 
 }
 //event listener for submit form
@@ -146,6 +147,7 @@ function submitEdit(){
         unHide("delete-a-movie");
         reHide("cancel-button");
         reHide("edit-another");
+        disableButton("confirm-edit-button")
 
     }).then(()=>{displayAllMovies()});
 
@@ -186,6 +188,7 @@ function deleteDialogButton() {
         movies.forEach(({title, id}) => {
             addMovieToDelete(title, id)
         });
+        enableButton("delete-this-movie")
     }).catch((error) => {
         alert('Oh no! Something went wrong.\nCheck the console for details.');
         console.log(error);
@@ -209,7 +212,8 @@ function deleteButton(){
         unHide("new-movie-form");
         unHide("delete-a-movie");
         unHide("edit-button");
-        reHide("cancel-button")
+        reHide("cancel-button");
+        disableButton("delete-this-movie")
     })
         .then(()=>{displayAllMovies()})
         // .then(()=>changeHelloAgain());
@@ -234,6 +238,9 @@ reHide("cancel-button");
 reHide("edit-form");
 reHide("edit-submit-form");
 reHide("edit-another");
+disableButton("confirm-edit-button");
+disableButton("edit-this-movie");
+disableButton("delete-this-movie");
     changeHelloAgain()
 }
 
@@ -255,6 +262,15 @@ function reHide(elementId){
 function changeEditMovie() {
     document.getElementById("heading").innerHTML = "Edit A Movie"
 
+}
+
+//function to enable button
+function enableButton(buttonId){
+    document.getElementById(buttonId).removeAttribute("disabled")
+}
+//function to disable button
+function disableButton(buttonId){
+    document.getElementById(buttonId).disabled= "true"
 }
 
 
