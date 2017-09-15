@@ -70,11 +70,13 @@ function addMovieToDelete(title, id){
 
 //event handler for edit button
 function editButton() {
+    reHide("delete-a-movie");
     reHide("movie-list-container");
     reHide("new-movie-form");
     reHide("edit-button");
     unHide("edit-form");
     unHide("edit-this-movie");
+    unHide("cancel-button");
     getMovies().then((movies) => {
         console.log('Editing movies...');
         document.getElementById("edit-movie").innerHTML = "";
@@ -92,6 +94,7 @@ document.getElementById("edit-button").addEventListener("click", editButton);
 
 //event handler for edit this movie button
 function editThisMovie(){
+    unHide("edit-another");
     reHide("edit-form");
     reHide("edit-this-movie");
     unHide("edit-submit-form");
@@ -128,7 +131,9 @@ function submitEdit(){
        unHide("movie-list-container");
         reHide("edit-submit-form");
         unHide("new-movie-form");
-        unHide("edit-button")
+        unHide("edit-button");
+        unHide("delete-a-movie");
+        reHide("cancel-button")
     }).then(()=>{displayAllMovies()});
 
 }
@@ -136,14 +141,27 @@ function submitEdit(){
 //event listener for submitting edits
 document.getElementById("confirm-edit-button").addEventListener("click", submitEdit);
 
+//event handler for edit a different movie button
+function editADifferentMovie(){
+    reHide("edit-another");
+    unHide("edit-form");
+    unHide("edit-this-movie");
+    reHide("edit-submit-form");
+
+}
+
+//event listener for Edit a Different Movie Button
+document.getElementById("edit-another").addEventListener("click", editADifferentMovie);
+
 //event handler for opening delete dialog
 function deleteDialogButton() {
-    reHide("delete-a-movie")
+    reHide("delete-a-movie");
     reHide("movie-list-container");
     reHide("new-movie-form");
     reHide("edit-button");
     unHide("delete-form");
     unHide("delete-this-movie");
+    unHide("cancel-button");
     getMovies().then((movies) => {
         console.log('Deleting a movie...');
         document.getElementById("delete-movie").innerHTML = "";
@@ -160,14 +178,9 @@ document.getElementById("delete-a-movie").addEventListener("click", deleteDialog
 
 //event handler
 function deleteButton(){
-    // let editedMovieTitle = document.getElementById("delete-title").value;
-    // let editedMovieRating = document.getElementById("-rating").value;
     let movieToDeleteId = document.getElementById("delete-movie").value;
-    // let editedMovieObj = {title:editedMovieTitle,rating:editedMovieRating,id:movieToEditId};
-    // console.log(editedMovieObj);
     let fetchOptions = {
         method: "DELETE",
-        // body: JSON.stringify(editedMovieObj),
         headers: header
     };
     fetch(`/api/movies/${movieToDeleteId}`,fetchOptions).then(()=>{
@@ -176,12 +189,29 @@ function deleteButton(){
         reHide("delete-form");
         unHide("new-movie-form");
         unHide("delete-a-movie");
-        unHide("edit-button")
+        unHide("edit-button");
+        reHide("cancel-button")
     }).then(()=>{displayAllMovies()});
 }
 
 //event listener for delete movie
 document.getElementById("delete-this-movie").addEventListener("click", deleteButton);
+
+//event handler for cancel button
+function cancelButton(){
+unHide("movie-list-container");
+    reHide("delete-form");
+    unHide("new-movie-form");
+    unHide("delete-a-movie");
+    unHide("edit-button");
+reHide("cancel-button");
+reHide("edit-form");
+reHide("edit-submit-form");
+reHide("edit-another")
+}
+
+//event listener for cancel button
+document.getElementById("cancel-button").addEventListener("click",cancelButton);
 
 
 //function to unhide things. the element id should be in the form of a string

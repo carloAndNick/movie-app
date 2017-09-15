@@ -11,9 +11,14 @@
       "id": 2
     },
     {
-      "title": "random movie",
-      "rating": "2",
+      "title": "random other movie",
+      "rating": "4",
       "id": 3
+    },
+    {
+      "title": "The Shawshank Redemption",
+      "rating": "4",
+      "id": 4
     }
   ]
 }
