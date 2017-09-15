@@ -210,6 +210,7 @@ reHide("edit-submit-form");
 reHide("edit-another")
 }
 
+
 //event listener for cancel button
 document.getElementById("cancel-button").addEventListener("click",cancelButton);
 
