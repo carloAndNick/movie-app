@@ -167,7 +167,8 @@ function editADifferentMovie(){
     unHide("edit-form");
     unHide("edit-this-movie");
     reHide("edit-submit-form");
-
+    enableButton("edit-this-movie");
+    disableButton("confirm-edit-button")
 }
 
 //event listener for Edit a Different Movie Button
