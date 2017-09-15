@@ -35,20 +35,24 @@ const header= new Headers({
 function addAMovie(){
     let movieTitle= document.getElementById("title").value;
     let movieRating= document.getElementById("rating").value;
+    if(movieTitle === ""){
+        alert("its empty")
+    } else {
 
-    let movieObj = {title:movieTitle,rating:movieRating};
-    console.log(movieObj);
-    let fetchOptions = {
-        method: "POST",
-        body: JSON.stringify(movieObj),
-        headers: header
-    };
-    document.getElementById("title").value = "";
-    document.getElementById("rating").value = "1";
-    fetch("/api/movies", fetchOptions)
-        .then((response)=>console.log(response.json()));
-    addMovieToHtml(movieTitle, movieRating)
 
+        let movieObj = {title: movieTitle, rating: movieRating};
+        console.log(movieObj);
+        let fetchOptions = {
+            method: "POST",
+            body: JSON.stringify(movieObj),
+            headers: header
+        };
+        document.getElementById("title").value = "";
+        document.getElementById("rating").value = "1";
+        fetch("/api/movies", fetchOptions)
+            .then((response) => console.log(response.json()));
+        addMovieToHtml(movieTitle, movieRating)
+    }
 }
 //event listener for button
 document.getElementById("button").addEventListener("click", addAMovie);
@@ -224,4 +228,24 @@ function reHide(elementId){
     document.getElementById(elementId).setAttribute("hidden", "true");
     document.getElementById(elementId).style.display = "none";
 }
+function changeEditMovie() {
+    document.getElementById("heading").innerHTML = "Edit A Movie"
+
+}
+
+
+document.getElementById("edit-button").addEventListener("click",changeEditMovie);
+
+function changeDeleteMovie() {
+    document.getElementById("heading").innerHTML = "Delete A Movie"
+
+}
+document.getElementById("delete-a-movie").addEventListener("click",changeDeleteMovie);
+
+function changeDeleteMovie() {
+    document.getElementById("heading").innerHTML = "Delete A Movie"
+
+}
+
+document.getElementById("button").addEventListener("click",changeDeleteMovie);
 

@@ -2,13 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Application</title>
     <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" src="https://code.jquery.com/ui/1.12.1/themes/excite-bike/jquery-ui.css">
+
+
 </head>
 <body>
 
+
+
+
+
+
     <div class="container">
-        <h1>Hello There!</h1>
+        <h1 id="heading">Hello There!</h1>
 
         <!--container with movie list and title-->
         <div id="movie-list-container">
@@ -21,7 +30,7 @@
         <form  method="post" action='' id="new-movie-form">
             <span>Title:</span>
             <input type="text" id="title">
-            <span>Rating:</span>
+            <span class>Rating:</span>
             <select id="rating" name="Rating">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -66,7 +75,16 @@
         <button type="button" id="cancel-button" hidden>Cancel</button>
 
     </div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
 
     <script src="/main.js"></script>
+
 </body>
 </html>

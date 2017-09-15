@@ -1,24 +1,14 @@
 {
   "movies": [
     {
-      "title": "Casablanca",
-      "rating": "4",
-      "id": 1
-    },
-    {
-      "title": "Star Wars: A New Hope",
+      "title": "Scarface",
       "rating": "5",
-      "id": 2
+      "id": 10
     },
     {
-      "title": "random other movie",
-      "rating": "4",
-      "id": 3
-    },
-    {
-      "title": "The Shawshank Redemption",
-      "rating": "4",
-      "id": 4
+      "title": "Blow",
+      "rating": "5",
+      "id": 11
     }
   ]
 }

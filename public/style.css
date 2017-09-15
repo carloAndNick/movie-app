@@ -1,10 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Lobster');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+
 html, body {
     height: 100%;
+    font-weight: bold;
+}
+body {
+    background-image: url("/js/movie-film-background-in-abstract-style_23-2147506185.jpg");
+
+    background-size: contain;
+    margin: auto;
+
 }
 
 .container {
     position: relative;
-    top: 50%;
+    top: 64%;
     transform: translateY(-100%);
     text-align: center;
+    background: rgba(255, 245, 185, .9);
+    border: 6px solid black;
+
+}
+h1 {
+font-size: 60px;
+    font-family: 'Fjalla One', sans-serif;
+}
+p{
+color: orange;
+    font-weight: bold;
+    font-size: 24px;
+
+}
+li{
+    list-style-type: none;
+    list-style-position: inside;
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+}
+
+span {
+    font-family: 'Fjalla One', sans-serif;
+    font-weight: bold;
+}
+
+button#delete-a-movie {
+    color: #f54d2a;
+
+
+
+}
+
+button {
+    font-size: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    font-weight: bold;
+    font-family: 'Inconsolata', monospace;
+}
+input {
+    background-color: black;
+    color: blanchedalmond;
+    font-size: 20px;
+    font-family: 'Fjalla One', sans-serif;
+    border-radius: 20px;
+
+
+}
+select {
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    background-color: #050201;
+}
+select option {
+    background-color: #f54d2a;
 }
